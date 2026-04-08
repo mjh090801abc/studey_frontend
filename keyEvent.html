@@ -6,15 +6,19 @@
     <title>Document</title>
 </head>
 <body>
+    <h1></h1> 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const h1 = document.querySelector('h1')
             const print = (event) => {
                 let output = ''
-                output += `alt: ${event.altkey} <br>`
-                output += `ctrl: ${event.ctrlkey} <br>`
-                output += `shift: ${event.shiftkey} <br>`
-                output += `code: ${typeof(event.codekey) !== 'undfined'? event.code : event.keyCode} <br>`
+                // altkey -> altKey, ctrlkey -> ctrlKey, shiftkey -> shiftKey (대소문자 수정)
+                output += `alt: ${event.altKey} <br>`
+                output += `ctrl: ${event.ctrlKey} <br>`
+                output += `shift: ${event.shiftKey} <br>`
+                
+                // codekey -> code, undfined -> undefined (오타 수정)
+                output += `code: ${typeof(event.code) !== 'undefined'? event.code : event.keyCode} <br>`
                 
                 h1.innerHTML = output
             }
