@@ -7,14 +7,15 @@
 </head>
 <body>
     <script>
-        document.addEventListener('DOMContentLoad', () => {
-            const textarea = document.querySelector('textarea')
+        document.addEventListener('DOMContentLoaded', () => {
             const h1 = document.querySelector('h1')
-        })
-
-        textarea.addEventListener('keyup', (event) => {
-            const length = textarea.value.length
-            h1.textContent = `글자 수 : ${length}`
+            const print = (event) => {
+                let output = ''
+                output += `alt: ${event.altkey} <br>`
+                output += `ctrl: ${event.ctrlkey} <br>`
+                output += `shift: ${event.shiftkey} <br>`
+                output += `code: ${typeof(event.codekey) !== 'undfined'? event.code : event.keyCode} <br>`
+            }
         })
     </script>
 </body>
