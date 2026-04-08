@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>승환 Limited Edition</title>
+    <style>
+        :root {
+            --primary-love: #ff4d6d;
+            --bg-color: #fff0f3;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: var(--bg-color);
+            font-family: 'Pretendard', sans-serif;
+            transition: background-color 0.5s ease;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
+        }
+        h1 {
+            color: var(--primary-love);
+            font-size: 2rem;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s;
+        }
+        h1:active { transform: scale(1.2); }
+        
+        .status-p {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .btn-group button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 0 5px;
+        }
+        #connect { background-color: var(--primary-love); color: white; }
+        #disconnect { background-color: #ccc; color: #333; }
+        
+        #connect:hover { background-color: #ff758f; }
+        #disconnect:hover { background-color: #bbb; }
+
+        /* 하트 애니메이션 */
+        .heart {
+            position: fixed;
+            color: var(--primary-love);
+            pointer-events: none;
+            animation: moveUp 1s ease-out forwards;
+        }
+        @keyframes moveUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="counter-title">💖 승환이와의 사랑 : 0</h1>
+    <p class="status-p">상태: 연결 대기 중...</p>
+    
+    <div class="btn-group">
+        <button id="connect">승환이와 한몸이 되버리기</button>
+        <button id="disconnect">잠시 거리두기</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let counter = 0;
+        let isConnect = false;
+
+        const h1 = document.querySelector('#counter-title');
+        const p = document.querySelector('.status-p');
+        const connectButton = document.querySelector('#connect');
+        const disconnectButton = document.querySelector('#disconnect');
+
+        // 하트 뿅뿅 함수
+        const createHeart = (x, y) => {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        };
+
+        const listener = (event) => {
+            counter++;
+            h1.textContent = `💖 승환이와의 사랑 : ${counter}`;
+            createHeart(event.clientX, event.clientY);
+            
+            // 사랑이 깊어질수록 배경이 붉어짐
+            const intensity = Math.min(counter * 2, 50);
+            document.body.style.backgroundColor = `rgb(255, ${240 - intensity}, ${243 - intensity})`;
+        };
+
+        connectButton.addEventListener('click', () => {
+            if (!isConnect) {
+                isConnect = true;
+                h1.addEventListener('click', listener);
+                p.textContent = "상태 : 승환이와 한몸이 되버림 (클릭해보세요!)";
+                p.style.color = "#ff4d6d";
+            }
+        });
+
+        disconnectButton.addEventListener('click', () => {
+            if (isConnect) {
+                isConnect = false;
+                h1.removeEventListener('click', listener);
+                p.textContent = "상태 : 잠시 냉전 중...";
+                p.style.color = "#888";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
