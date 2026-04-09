@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.querySelector('input')
+            const button = document.querySelector('button')
+            const p = document.querySelector('p')
+            
+            button.addEventListener('click', () => {
+                if(typeof(Number(input.value))!==NaN) {
+                    p.textContent = "숫자가 아닌데요"
+                }
+                p.textContent = `${Number(input.value) * 2.54}cm로 반환되었습니다`
+            })
+        })
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="">inch<br>
+    <button>계산</button>
+    <p></p>
+</body>
+</html>
