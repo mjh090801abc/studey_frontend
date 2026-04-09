@@ -7,17 +7,20 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const select = document.querySelector('select')
-            const p = document.addEventListener('p')
+            // 수정: addEventListener가 아니라 querySelector로 <p> 태그를 찾아야 합니다.
+            const p = document.querySelector('p')
 
             select.addEventListener('change', (event) => {
                 const options = event.currentTarget.options
                 const list = []
+                
                 for (const option of options) {
                     if(option.selected) {
                         list.push(option.textContent)
                     }
                 }
-                p.textContent = `선택한 항목 : ${list.join('.')}`
+                // join(', ')을 사용하여 여러 개 선택 시 쉼표로 구분되게 했습니다.
+                p.textContent = `선택한 항목 : ${list.join(', ')}`
             })
         })
     </script>
@@ -32,6 +35,6 @@
         <option>중국</option>
         <option>우크라이나</option>
     </select>
-    <p></p>
+    <p>선택한 항목 : </p>
 </body>
 </html>
