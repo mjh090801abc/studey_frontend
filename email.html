@@ -1,36 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>이메일 형식 검사</title>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const input = document.querySelector('input')
-            const p = document.querySelector('p')
+            const input = document.querySelector('input');
+            const p = document.querySelector('p');
 
-            const isEmail = (value) => { // 이메일 검사
-                return (value.indexOf('@') > 1) && (value.split('@')[1].indexOf('.') > 1)
+            // 이메일 검사 함수
+            const isEmail = (value) => {
+                // @가 인덱스 1보다 뒤에 있고, @ 뒷부분에 .이 인덱스 1보다 뒤에 있는지 확인
+                return (value.indexOf('@') > 1) && (value.split('@')[1].indexOf('.') > 1);
             }
 
-            input.addEventListener('keyup', (event) => 
-            {
-                const value = event.currentTarget.
-                value
-                if(isEmail(email)) {
-                    p.style.color = 'green'
-                    p.textContent = `이메일 형식입니다. : ${email}`
+            input.addEventListener('keyup', (event) => {
+                const value = event.currentTarget.value; // 변수 이름을 일치시킴
+
+                if (isEmail(value)) {
+                    p.style.color = 'green';
+                    p.textContent = `이메일 형식입니다. : ${value}`;
                 } else {
-                    p.style.color = 'red'
-                    p.textContent = `이메일 형식이 아닙니다. : ${email}`
+                    p.style.color = 'red';
+                    p.textContent = `이메일 형식이 아닙니다. : ${value}`;
                 }
-            })
-        }) // aadfsasad[0] @ a.aasdas[1]
+            });
+        });
     </script>
 </head>
 <body>
-    <h1>이메일 형식을 입력해주세요<br></h1>
-    <input type = "text">
+    <h1>이메일 형식을 입력해주세요</h1>
+    <input type="text">
     <p></p>
 </body>
 </html>
