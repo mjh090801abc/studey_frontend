@@ -9,13 +9,28 @@
             const input = document.querySelector('input')
             const p = document.querySelector('p')
 
-            const isEmail = (value) => {
+            const isEmail = (value) => { // 이메일 검사
                 return (value.indexOf('@') > 1) && (value.split('@')[1].indexOf('.') > 1)
             }
+
+            input.addEventListener('keyup', (event) => 
+            {
+                const value = event.currentTarget.
+                value
+                if(isEmail(email)) {
+                    p.style.color = 'green'
+                    p.textContent = `이메일 형식입니다. : ${email}`
+                } else {
+                    p.style.color = 'red'
+                    p.textContent = `이메일 형식이 아닙니다. : ${email}`
+                }
+            })
         }) // aadfsasad[0] @ a.aasdas[1]
     </script>
 </head>
 <body>
-    
+    <h1>이메일 형식을 입력해주세요<br></h1>
+    <input type = "text">
+    <p></p>
 </body>
 </html>
