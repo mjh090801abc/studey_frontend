@@ -10,11 +10,13 @@
             const button = document.querySelector('button')
             const p = document.querySelector('p')
             
-            button.addEventListener('click', () => {
+            button.addEventListener('key', () => {
                 if(isNaN(Number(input.value))!==NaN) {
                     p.textContent = "숫자가 아닌데요"
                 }
-                p.textContent = `${Number(input.value) * 2.54}cm로 반환되었습니다`
+                input.addEventListener('change', () => {
+                    p.textContent = `${Number(input.value) * 2.54}cm로 반환되었습니다`
+                })
             })
         })
     </script>
