@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const select = document.querySelector('select')
+            const p = document.addEventListener('p')
+
+            select.addEventListener('change', (event) => {
+                const options = event.currentTarget.options
+                const list = []
+                for (const option of options) {
+                    if(option.selected) {
+                        list.push(option.textContent)
+                    }
+                }
+                p.textContent = `선택한 항목 : ${list.join('.')}`
+            })
+        })
+    </script>
+</head>
+<body>
+    <select multiple>
+        <option>미국</option>
+        <option>이스라엘</option>
+        <option>이란</option>
+        <option>북한</option>
+        <option>러시아</option>
+        <option>중국</option>
+        <option>우크라이나</option>
+    </select>
+    <p></p>
+</body>
+</html>
