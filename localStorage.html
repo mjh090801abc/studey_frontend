@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const p = document.querySelector('p')
+            const input = documen.querySelector('input')
+            const button = document.querySelector('buton')
+
+            const savedValue = localStorage.getItem('input')
+            if(savedValue) {
+                input.value = savedValue
+                p.textContent = `이전 실행 시 마지막 값 : ${savedValue}`
+                Input.addEventListener('keyup', (event) => {
+                    const value = event.currentTarget.value
+                    localStorage.setItem('input', value)
+                    localStorage.input = value
+                })
+            }
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
