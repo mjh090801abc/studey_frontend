@@ -1,1 +1,3 @@
-console.log("인덱스 실행")
+import * as circle from "./circle.js";
+
+console.log(circle.PI, circle.getArea(3), circle.getCir(5))
