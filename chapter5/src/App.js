@@ -10,7 +10,11 @@ function Header() {
 
 function App() {
   return (
-    <div className='App'></div>
+    <div className='App'>
+      <Header />
+    </div>
+
+    // <div></div> === <div />
   );
 }
 
