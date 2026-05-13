@@ -4,10 +4,11 @@ import Header from './component/Header';
 import Body from './component/body';
 
 function App() {
+  const name = "문정훈"
   return (
     <div className='App'>
       <Header />
-      <Body />
+      <Body name = {name} drink = {"참소주"}/>
       <Footer />
     </div>
 
