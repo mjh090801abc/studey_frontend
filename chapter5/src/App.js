@@ -3,17 +3,17 @@ import Footer from './component/Footer';
 import Header from './component/Header';
 import Body from './component/body';
 
-const BodyProps = {
-  name: "리트리버",
-  location: "UK",
-  breed: ["골든", "래브라도", "톨러"]
+function ChildComp() {
+  return <div>자식 컴포넌트임</div>
 }
 
 function App() {
   return (
     <div className='App'>
       <Header />
-      <Body {...BodyProps}/>
+      <Body>
+        <ChildComp></ChildComp>
+      </Body>
       <Footer />
     </div>
 
