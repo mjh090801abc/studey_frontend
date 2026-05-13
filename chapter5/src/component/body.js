@@ -1,10 +1,10 @@
-function Body(p) {
-    const {name, drink} = p
-    console.log(name, drink)
-    const number = 20
+function Body({name, location, breed}) {
+    console.log(name, location, breed)
     return (
         <div>
-            {name}은 {drink}에 조예가 깊습니다. 나이는 {number}입니노
+            {name}은 {location}에 살고 있습니다.
+            <br></br>
+            {breed.length}개의 품종이 있습니다.
         </div>
     );
 

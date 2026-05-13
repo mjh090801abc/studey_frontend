@@ -3,12 +3,17 @@ import Footer from './component/Footer';
 import Header from './component/Header';
 import Body from './component/body';
 
+const BodyProps = {
+  name: "리트리버",
+  location: "UK",
+  breed: ["골든", "래브라도", "톨러"]
+}
+
 function App() {
-  const name = "문정훈"
   return (
     <div className='App'>
       <Header />
-      <Body name = {name} drink = {"참소주"}/>
+      <Body {...BodyProps}/>
       <Footer />
     </div>
 
