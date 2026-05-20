@@ -1,63 +1,57 @@
-import { useState } from "react"
+import { use, useState } from "react";
 
-function Body() {
-    
-    const [name, setName] = useState("")
-    const [gender, setGender] = useState("")
-    const [birth, setBirth] = useState("")
-    const [bio, setBio] = useState("")
+function Body({ children }) {
+const [state, setState] = useState({
+    userName: "",
+    gender: "",
+    birth: "",
+    bio: "",
+});
 
-    const onChangeName = (e) => {
-        setName(e.target.value)
-    }
+const handleOnChange = (e) => {
+    const { name, value } = e.target;
 
-    const onChangeGender = (e) => {
-        setGender(e.target.value)
-    }
+    console.log("현재 수정 대상: ", name);
+    console.log("수정 값: ", value);
 
-    const onChangeBirth = (e) => {
-        setBirth(e.target.value)
-    }
+    setState({
 
-    const onChangeBio = (e) => {
-        setBio(e.target.value)
-    }
+    ...state,
+    [name]: value,
+    });
+};
 
-    return(
-        <div>
-            <div>
-                <div>
-                    <input value = {name} onChange={onChangeName} placeholder="이름" />
-                </div>
-            </div>
-            <div>
-                <select value={gender} onChange={onChangeGender}>
-                    <option>남성</option>
-                    <option>여성</option>
-                    <option>양성애자</option>
-                </select>
-            </div>
-            <div>
-                <input type="date" value={birth}onChange={onChangeBirth}></input>
-            </div>
-            <div>
-                <textarea value={bio} onChange={onChangeBio}></textarea>
-            </div>
-        </div>
-    )
-
-
-    // function handleOnClick(event) {
-    //     console.log(event)
-    //     console.log(event.target.name)
-    // }
-    // return (
-    //     <div>
-    //         <button name="A버튼" onClick={handleOnClick}></button>
-    //         <button name="B버튼" onClick={handleOnClick}></button>
-    //     </div>
-    // );
-
+return (
+    <div>
+    <div>
+        <input
+        name="userName"
+        value={state.userName}
+        onChange={handleOnChange}
+        placeholder="이름"
+        />
+    </div>
+    <div>
+        <select name="gender" value={state.gender} onChange={handleOnChange}>
+        <option value="">선택</option>
+        <option value="남성">남성</option>
+        <option value="여성">여성</option>
+        <option value="논바이너리">논바이너리</option>
+        </select>
+    </div>
+    <div>
+        <input
+        name="birth"
+        type="date"
+        value={state.birth}
+        onChange={handleOnChange}
+        />
+    </div>
+    <div>
+        <textarea name="bio" value={state.bio} onChange={handleOnChange} />
+    </div>
+    </div>
+);
 }
 
-export default Body
+export default Body;
