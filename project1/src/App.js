@@ -1,13 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import Controller from './component/Controller';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [count, setCount] = useState(0)
   const handleSetCount = (value) => {
     setCount(count + value)
   }
+
+  useEffect(()=>{
+    console.log("count 값이 바뀌었어요. ", count)
+  }, [count])
+
   return (
     <div className='App'>
       <h1>심플 카운터</h1>
