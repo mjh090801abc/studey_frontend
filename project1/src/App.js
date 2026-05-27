@@ -12,6 +12,10 @@ function App() {
     setText(e.target.value)
   }
 
+  useEffect(() => {
+    console.log("컴포넌트 마운트")
+  }, {})
+
   useEffect(()=>{
     if (!mountRef) {
       mountRef.current = true;
