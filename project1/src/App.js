@@ -5,13 +5,17 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [count, setCount] = useState(0)
-  const handleSetCount = (value) => {
+  const [text, ] = (value) => {
     setCount(count + value)
   }
 
+  const handleOnChangeText = (e) => {
+    setText(e.target.value)
+  }
+
   useEffect(()=>{
-    console.log("count 값이 바뀌었어요. ", count)
-  }, [count])
+    console.log("count 값이 바뀌었어요. ", count, text)
+  }, [count, text])
 
   return (
     <div className='App'>
