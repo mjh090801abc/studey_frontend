@@ -21,6 +21,9 @@ function App() {
     <div className='App'>
       <h1>심플 카운터</h1>
       <section>
+        <input value={text} onChange = {{handleOnChangeText}} />
+      </section>
+      <section>
         <Viewer count={count}/>
       </section>
       <section>
