@@ -5,15 +5,19 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [count, setCount] = useState(0)
-  const [text, ] = (value) => {
-    setCount(count + value)
-  }
+  const [text, setText] = useState("")
+  const = mountRef = useRef(false)
 
   const handleOnChangeText = (e) => {
     setText(e.target.value)
   }
 
   useEffect(()=>{
+    if (!mountRef) {
+      mountRef.current = true;
+    } else {
+      console.log("count 값이 바뀌었어요 ", count, text)
+    }
     console.log("count 값이 바뀌었어요. ", count, text)
   }, [count, text])
 
